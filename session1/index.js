@@ -112,23 +112,92 @@
 // ex. seekAndDestroy([2, 3, 4, 6, 6, 'hello'], 2, 6) == [3, 4, 'hello']
 
 // Solution 1: arguments, indexOf, filter
-function seekAndDestroy(arr) {
-    const args = Array.from(arguments);
+// function seekAndDestroy(arr) {
+//     const args = Array.from(arguments);
   
-    function filterArr(arr) {
-      // Return true if NOT in array
-      return args.indexOf(arr) === -1;
-    }
+//     function filterArr(arr) {
+//       // Return true if NOT in array
+//       return args.indexOf(arr) === -1;
+//     }
   
-    return arr.filter(filterArr);
-  }
+//     return arr.filter(filterArr);
+//   }
   
   // Solution 2: ...rest, filter & includes
-  function seekAndDestroy(arr, ...rest) {
-    return arr.filter(val => !rest.includes(val));
-  }
+//   function seekAndDestroy(arr, ...rest) {
+//     return arr.filter(val => !rest.includes(val));
+//   }
 
-console.log(seekAndDestroy([2, 3, 4, 6, 6, 'hello'], 2, 6))
+// console.log(seekAndDestroy([2, 3, 4, 6, 6, 'hello'], 2, 6))
+
+// CHALLENGE 4: SORT BY HEIGHT
+// Some people are standing in a row in a park. There are trees between them which cannot be moved. Your task is to rearrange the people by their heights in a non-descending order without moving the trees.
+// ex.
+// a = [-1, 150, 190, 170, -1, -1, 160, 180]
+// sortByHeight(a) == [-1, 150, 160, 170, -1, -1, 180, 190]
+
+// function sortByHeight(a) {
+//     const arr1 = [];
+//     const arr2 = [];
+
+//     // Es5 
+//     // a.forEach((val1, position1 ) => {
+//     //     if(val1 === -1){
+//     //         arr1.push(position1)
+
+//     //     }else {
+//     //         arr2.push(val1)
+//     //     }  
+//     // });
+
+//     //  Es6 its easy and less coding
+//     a.forEach((val, i) => val === -1 ? arr1.push(i) : arr2.push(val) );
+//      console.log('arr1: for position:', arr1,'arr2 for value:', arr2)
+
+//     // // then sorted array from lowest to highest
+//     const sortArr = arr2.sort((a, b) => a -b)
+//     console.log('then sorted arr2 for the value from lowest to highest:', sortArr)
+//     // then splice the  index  of arr1 position.
+//     arr1.forEach((val, i) => sortArr.splice(arr1[i], 0, -1))
+//     return sortArr;
+
+    
+// }
+
+
+// same steps but clear without comment.
+// function sortByHeight(a) {
+//     const arr1 = [];
+//     const arr2 = [];
+  
+//     a.forEach((val, i) => (val === -1 ? arr1.push(i) : arr2.push(val)));
+  
+//     const sortArr = arr2.sort((a, b) => a - b);
+  
+//     arr1.forEach((val, i) => sortArr.splice(arr1[i], 0, -1));
+  
+//     return sortArr;
+//   }
+
+
+function sortByHeight (a){
+    const arr1 = [];
+    const arr2 = [];
+    
+    a.forEach((val, i) => val === -1 ? arr1.push(i) : arr2.push(val) );
+    console.log(arr1, arr2)
+    // then create const sortArr to be sorted by arr2  value from lowest to highest
+    const sortArr  = arr2.sort((a, b) => a - b)
+    console.log('sortAr', sortArr)
+    // splice arr1 to the position.
+    arr1.forEach((val, i) => sortArr.splice(arr1[i], 0, -1))
+    return sortArr;
+
+}
+
+const a = [-1, 150, 190, 170, -1, -1, 160, 180]
+console.log(sortByHeight(a));
+
 
 
 
