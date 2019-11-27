@@ -180,23 +180,48 @@
 //   }
 
 
-function sortByHeight (a){
-    const arr1 = [];
-    const arr2 = [];
+// function sortByHeight (a){
+//     const arr1 = [];
+//     const arr2 = [];
     
-    a.forEach((val, i) => val === -1 ? arr1.push(i) : arr2.push(val) );
-    console.log(arr1, arr2)
-    // then create const sortArr to be sorted by arr2  value from lowest to highest
-    const sortArr  = arr2.sort((a, b) => a - b)
-    console.log('sortAr', sortArr)
-    // splice arr1 to the position.
-    arr1.forEach((val, i) => sortArr.splice(arr1[i], 0, -1))
-    return sortArr;
+//     a.forEach((val, i) => val === -1 ? arr1.push(i) : arr2.push(val) );
+//     console.log(arr1, arr2)
+//     // then create const sortArr to be sorted by arr2  value from lowest to highest
+//     const sortArr  = arr2.sort((a, b) => a - b)
+//     console.log('sortAr', sortArr)
+//     // splice arr1 to the position.
+//     arr1.forEach((val, i) => sortArr.splice(arr1[i], 0, -1))
+//     return sortArr;
 
+// }
+
+// const a = [-1, 150, 190, 170, -1, -1, 160, 180]
+// console.log(sortByHeight(a));
+// CHALLENGE 6: EVEN & ODD SUMS
+// Take in an array and return an array of the sums of even and odd numbers
+// ex.
+// evenOddSums([50, 60, 60, 45, 71]) == [170, 116]
+
+function evenOddSums(arr){
+  var evenSum = 0;
+  var oddSum = 0;
+  arr.forEach( num => num % 2 === 0 ? evenSum += num: oddSum += num ); 
+  return [evenSum, oddSum];
 }
+console.log(evenOddSums([50, 60, 60, 45, 71]))
 
-const a = [-1, 150, 190, 170, -1, -1, 160, 180]
-console.log(sortByHeight(a));
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
